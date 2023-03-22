@@ -1,7 +1,7 @@
 package com.mycompany.conversordemonedasyotros;
 
 import java.util.Scanner;
-
+import javax.swing.JOptionPane;
 
 public class Monedas {
     
@@ -40,26 +40,27 @@ public class Monedas {
  
     
     public void aOtraMoneda(){
-        Scanner scr = new Scanner(System.in);
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("INGRESE la cantidad de pesos chilenos a calcular:");
-        System.out.print("$: ");
-        this.cantidad = scr.nextDouble();
-        double resultado = Math.round(((this.cantidad / this.getValor())) * 100.00) / 100.00;
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("TIENES: " + resultado + " " + this.getNombre());
+        try {
+            String valor = JOptionPane.showInputDialog("Ingrese la cantidad de PESOS CHILENOS a calcular: ", cantidad);
+            double cantidad = Double.parseDouble(valor);
+            double resultado = Math.round(((cantidad / this.getValor())) * 100.00) / 100.00;
+            JOptionPane.showMessageDialog(null, "TIENES: " + resultado + " " + this.getNombre());
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Ingrese SOLO números");
+            aOtraMoneda();
+        }
     }
-   //Math.round(((cantidad - fahrenheit) * 5/9)* 100.000) / 100.00;
+
     
-    public double aPesos(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("INGRESE la cantidad en " + this.getNombre() + " a calcular:");
-        System.out.print("$: ");
-        this.cantidad = sc.nextDouble();
-        double resultado = Math.round(((this.cantidad * this.getValor())) * 100.00) / 100.00;
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("TIENES: " + resultado + " PESOS CHILENOS");
-        return resultado;
+    public void aPesos(){
+        try {
+            String valor = JOptionPane.showInputDialog("Ingrese la cantidad en " + this.getNombre() + " a calcular: ", cantidad);
+            double cantidad = Double.parseDouble(valor);
+            double resultado = Math.round(((this.cantidad * this.getValor())) * 100.00) / 100.00;
+            JOptionPane.showMessageDialog(null, "TIENES: " + resultado + " PESOS CHILENOS");
+        } catch (NumberFormatException ex) {    
+            JOptionPane.showMessageDialog(null, "Ingrese SOLO números");
+            aPesos();
+        }
     }
 }

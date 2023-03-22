@@ -3,7 +3,7 @@ package com.mycompany.conversordemonedasyotros;
 
 public class Dolar extends Monedas{
    
-    double valor = 800.26;           // 1 dolar = $800 chilenos
+    double valor = 800.26;
     String nombre = "DOLARES";
 
     

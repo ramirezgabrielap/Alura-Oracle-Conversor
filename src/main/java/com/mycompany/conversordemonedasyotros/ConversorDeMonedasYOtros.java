@@ -9,7 +9,6 @@ public class ConversorDeMonedasYOtros {
         Logica logica = new Logica();
         
         logica.welcome();
-        logica.menuPrincipal();
         logica.opciones();
         
     }
